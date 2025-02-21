@@ -1,0 +1,32 @@
+{
+  "name": "yanyab",
+  "version": "1.0.0-beta",
+  "description": "Yet Another Name Yet Another Bot",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "npx tsc -p .",
+    "freshbuild": "rm -r ./build/ && npx tsc -p .",
+    "test": "clear && npx tsc -p . && node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KN13KOMETA/yanyab.git"
+  },
+  "keywords": [
+    "utility",
+    "bot",
+    "telegram"
+  ],
+  "author": "KN13KOMETA",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/KN13KOMETA/yanyab/issues"
+  },
+  "homepage": "https://github.com/KN13KOMETA/yanyab#readme",
+  "devDependencies": {
+    "@types/node": "^22.13.4"
+  },
+  "dependencies": {
+    "typescript": "^5.7.3"
+  }
+}
