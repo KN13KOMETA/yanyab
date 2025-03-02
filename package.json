@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc -p .",
     "freshbuild": "rm -r ./build/ && npx tsc -p .",
-    "test": "clear && npx tsc -p . && node ."
+    "test": "clear && npx tsc -p . && node --env-file=.env ."
   },
   "repository": {
     "type": "git",
@@ -24,9 +24,11 @@
   },
   "homepage": "https://github.com/KN13KOMETA/yanyab#readme",
   "devDependencies": {
-    "@types/node": "^22.13.4"
+    "@types/node": "^22.13.4",
+    "@types/node-telegram-bot-api": "^0.64.7"
   },
   "dependencies": {
+    "node-telegram-bot-api": "^0.66.0",
     "typescript": "^5.7.3"
   }
 }
