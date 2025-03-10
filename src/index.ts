@@ -1,6 +1,7 @@
 import TelegramBot from "node-telegram-bot-api";
 import { getPage } from "./shadowmere";
 
+// TODO: i18n, universal io, uio commands
 // TODO: my notes on telegram
 // read bout difference between polling and webhook
 // events
@@ -14,7 +15,7 @@ import { getPage } from "./shadowmere";
 
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN || "", {
   polling: {
-    interval: 500,
+    interval: 1000,
     autoStart: true,
   },
 });
