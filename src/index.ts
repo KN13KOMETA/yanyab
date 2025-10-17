@@ -44,7 +44,7 @@ bot.onText(/^\/getproxy$/i, async (msg) => {
 
     bot.editMessageText(
       "Data from " +
-      new URL(process.env.API_URL || "").hostname +
+      new URL(process.env.SM_URL || "").hostname +
       page1.results.reduce(
         (prev, cur) => `${prev}\n\`${cur.url}#${cur.location}\``,
         "\n",
