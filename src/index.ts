@@ -1,6 +1,7 @@
 import TelegramBot from "node-telegram-bot-api";
 import { connect } from "puppeteer-real-browser";
 import { ShadowmereProvider } from "./ShadowmereProvider";
+// wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 // TODO: i18n, universal io, uio commands
 // TODO: my notes on telegram
