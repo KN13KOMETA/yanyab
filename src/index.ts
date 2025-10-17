@@ -1,5 +1,6 @@
 import TelegramBot from "node-telegram-bot-api";
-import { getPage } from "./shadowmere";
+import { connect } from "puppeteer-real-browser";
+import { ShadowmereProvider } from "./ShadowmereProvider";
 
 // TODO: i18n, universal io, uio commands
 // TODO: my notes on telegram
@@ -12,6 +13,24 @@ import { getPage } from "./shadowmere";
 // message -> voice
 // message -> video
 // message -> sticker
+
+let smProvider: ShadowmereProvider | null = null;
+(async () => {
+  const { page, browser } = await connect({
+    headless: false,
+    args: [],
+    customConfig: {},
+    turnstile: true,
+    connectOption: {},
+    disableXvfb: false,
+    ignoreAllFlags: false,
+  });
+
+  smProvider = new ShadowmereProvider(process.env.SM_URL || "", page);
+  await smProvider.init();
+
+  // browser.close();
+})();
 
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN || "", {
   polling: {
@@ -39,8 +58,20 @@ bot.onText(/^\/getproxy$/i, async (msg) => {
   const cid = msg.chat.id;
   const fmsg = bot.sendMessage(cid, "Fetching api...");
 
+  if (!smProvider) {
+    bot.editMessageText("Bot is starting. Try again later.", {
+      chat_id: cid,
+      message_id: (await fmsg).message_id,
+    });
+
+    return;
+  }
+
   try {
-    const page1 = await getPage(1);
+    const page1 = await smProvider.getPage(1);
+    // const page1 = await getPage(1);
+
+    console.log(page1);
 
     bot.editMessageText(
       "Data from " +

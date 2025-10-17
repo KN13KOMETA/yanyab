@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "node-telegram-bot-api": "^0.66.0",
+    "puppeteer-real-browser": "^1.4.4",
     "typescript": "^5.7.3"
   }
 }
