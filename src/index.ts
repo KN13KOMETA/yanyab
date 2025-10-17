@@ -73,18 +73,19 @@ bot.onText(/^\/getproxy$/i, async (msg) => {
 
     bot.editMessageText(
       "Data from " +
-      new URL(process.env.SM_URL || "").hostname +
-      page1.results.reduce(
-        (prev, cur) => `${prev}\n\`${cur.url}#${cur.location}\``,
-        "\n",
-      ),
+        new URL(process.env.SM_URL || "").hostname +
+        page1.results.reduce(
+          (prev, cur) => `${prev}\n\`${cur.url}#${cur.location}\``,
+          "\n",
+        ),
       {
         chat_id: cid,
         message_id: (await fmsg).message_id,
         parse_mode: "Markdown",
       },
     );
-  } catch {
+  } catch (e) {
+    console.log(e);
     bot.editMessageText("Unable to reach api. Try again later.", {
       chat_id: cid,
       message_id: (await fmsg).message_id,
