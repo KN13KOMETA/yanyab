@@ -70,9 +70,6 @@ bot.onText(/^\/getproxy$/i, async (msg) => {
 
   try {
     const page1 = await smProvider.getPage(1);
-    // const page1 = await getPage(1);
-
-    console.log(page1);
 
     bot.editMessageText(
       "Data from " +
